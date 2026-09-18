@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>講義動画</title>
+<style>
+html,body{margin:0;height:100%;background:#111}
+iframe{display:block;width:100%;height:100%;border:0}
+.err{color:#fff;font:16px/1.6 sans-serif;padding:24px}
+</style>
+</head>
+<body>
+<script>
+(() => {
+  const id = new URLSearchParams(location.search).get("v");
+  if (!id || !/^[A-Za-z0-9_-]{6,}$/.test(id)) {
+    document.body.innerHTML = '<p class="err">動画を開けませんでした。</p>';
+    return;
+  }
+  const frame = document.createElement("iframe");
+  frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
+  frame.title = "YouTube video player";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+  frame.referrerPolicy = "strict-origin-when-cross-origin";
+  frame.allowFullscreen = true;
+  document.body.appendChild(frame);
+})();
+</script>
+</body>
+</html>

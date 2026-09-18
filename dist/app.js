@@ -19,7 +19,7 @@ main.addEventListener('click',e=>{
  const video=e.target.closest('[data-video-window]');
  if(video){
   const id=youtubeId(video.href);
-  if(id){e.preventDefault();window.open('https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0',video.dataset.videoWindow,'popup,width=1200,height=760,noopener,noreferrer')}
+  if(id){e.preventDefault();window.open('embed-player.html?v='+encodeURIComponent(id),video.dataset.videoWindow,'popup,width=1200,height=760,noopener')}
   return;
  }
  const b=e.target.closest('[data-image]');if(!b)return;
